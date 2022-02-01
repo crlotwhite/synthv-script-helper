@@ -350,114 +350,114 @@
         "description": "Set the pitch offset to pitchOffset (semitones)."
     },
     "setTarget": {
-        "prefix": "setTarget",
+        "prefix": "setTarget(group)",
         "body": "setTarget(${1:group})",
-        "description": "SV-设置目标音符组"
+        "description": "Set the target NoteGroup. Note that once set, the target can't be changed."
     },
     "setTimeOffset": {
-        "prefix": "setTimeOffset",
+        "prefix": "setTimeOffset(blickOffset)",
         "body": "setTimeOffset(${1:blickOffset})",
-        "description": "SV-将时间偏移设置为"
+        "description": "Set the time offset to blickOffset (blicks)."
     },
     "setVoice": {
-        "prefix": "setVoice",
+        "prefix": "setVoice(attributes)",
         "body": "setVoice()",
-        "description": "SV-基于属性对象设置语音属性"
+        "description": "Set voice properties based on an attribute object (for the definition, see NoteGroupReference#getVoice). The attribute object does not have to be complete; only the given properties will be updated (see Note#setAttributes)."
     },
     "getPlayhead": {
-        "prefix": "getPlayhead",
+        "prefix": "getPlayhead() → {number}",
         "body": "getPlayhead()",
-        "description": "SV-以秒为单位获取当前播放头位置"
+        "description": "Get the current playhead position in seconds. To get the position in blicks, use this with the current project's TimeAxis."
     },
     "getStatus": {
-        "prefix": "getStatus",
+        "prefix": "getStatus() → {string}",
         "body": "getStatus()",
-        "description": "SV-获取当前播放状态"
+        "description": "Get the current playback status. It can be one of the following; playing, looping, stopped."
     },
     "loop": {
-        "prefix": "loop",
+        "prefix": "loop(tBegin, tEnd)",
         "body": "loop(${1:tBegin}, ${2:tEnd})",
-        "description": "SV-在begin和end之间开始循环"
+        "description": "Start looping between tBegin and tEnd in seconds."
     },
     "pause": {
-        "prefix": "pause",
+        "prefix": "pause()",
         "body": "pause()",
-        "description": "SV-暂停"
+        "description": "Stop playing but without resetting the playhead."
     },
     "play": {
-        "prefix": "play",
+        "prefix": "play()",
         "body": "play()",
-        "description": "SV-播放"
+        "description": "Start playing audio."
     },
     "seek": {
-        "prefix": "seek",
+        "prefix": "seek(t)",
         "body": "seek()",
-        "description": "SV-将播放头位置设置为"
+        "description": "Set the playhead position to t in seconds. If the audio is playing, this does not pause the audio but resumes playing at the new position."
     },
     "stop": {
-        "prefix": "stop",
+        "prefix": "stop()",
         "body": "stop()",
-        "description": "SV-停止播放，将播放头重置为播放开始位置"
+        "description": "Stop playing and reset the playhead to where the playback started."
     },
     "addNoteGroup": {
-        "prefix": "addNoteGroup",
+        "prefix": "addNoteGroup(group, suggestedIndex) → {number}",
         "body": "addNoteGroup(${1:group}, ${2:suggestedIndex})",
-        "description": "SV-插入项目库"
+        "description": "Insert a NoteGroup to the project library at suggestedIndex. If suggestedIndex is not given, the NoteGroup is added at the end. Return the index of the added NoteGroup."
     },
     "addTrack": {
-        "prefix": "addTrack",
+        "prefix": "Add a Track to the Project. Return the index of the added Track.",
         "body": "addTrack()",
-        "description": "SV-添加音轨"
+        "description": "Add a Track to the Project. Return the index of the added Track."
     },
     "getFileName": {
-        "prefix": "getFileName",
+        "prefix": "getFileName() → {string}",
         "body": "getFileName()",
-        "description": "SV-获取文件名"
+        "description": "Get the absolute path of the project on the file system."
     },
     "getNoteGroup": {
-        "prefix": "getNoteGroup",
+        "prefix": "getNoteGroup(id) → {NoteGroup|undefined}",
         "body": "getNoteGroup(${1:id})",
-        "description": "SV-获取音符组"
+        "description": "If id is a number, get the id-th NoteGroup in the project library. If id is a string, look for a NoteGroup in the project library with id as its UUID; return undefined if no such NoteGroup exists."
     },
     "getNumNoteGroupsInLibrary": {
-        "prefix": "getNumNoteGroupsInLibrary",
+        "prefix": "getNumNoteGroupsInLibrary() → {number}",
         "body": "getNumNoteGroupsInLibrary()",
-        "description": "SV-获取项目库中的音符组数"
+        "description": "Get the number of NoteGroup in the project library. It does not count the main groups and is unrelated to the number of NoteGroupReference."
     },
     "getNumTracks": {
-        "prefix": "getNumTracks",
+        "prefix": "getNumTracks() → {number}",
         "body": "getNumTracks()",
-        "description": "SV-获取音轨数"
+        "description": "Get the number of tracks."
     },
     "getTimeAxis": {
-        "prefix": "getTimeAxis",
+        "prefix": "getTimeAxis() → {TimeAxis}",
         "body": "getTimeAxis()",
-        "description": "SV-获取timeaxis对象"
+        "description": "Get the TimeAxis object of this Project."
     },
     "getTrack": {
-        "prefix": "getTrack",
+        "prefix": "getTrack(index) → {Track}",
         "body": "getTrack(${1:index})",
-        "description": "SV-获取音符的轨道"
+        "description": "Get the index-th Track. The indexing is based on the storage order rather than display order."
     },
     "newUndoRecord": {
-        "prefix": "newUndoRecord",
+        "prefix": "newUndoRecord()",
         "body": "newUndoRecord()",
-        "description": "SV-为此添加新的撤消记录"
+        "description": "Add a new undo record for this Project. This means that all edits following the last undo record will be undone/redone together when the users press Ctrl + Z or Ctrl + Y."
     },
     "removeNoteGroup": {
-        "prefix": "removeNoteGroup",
+        "prefix": "removeNoteGroup(index)",
         "body": "removeNoteGroup(${1:index})",
-        "description": "SV-删除音符组"
+        "description": "Remove index-th NoteGroup from the project library. This also removes all NoteGroupReference that refer to the NoteGroup."
     },
     "removeTrack": {
-        "prefix": "removeTrack",
+        "prefix": "removeTrack(index)",
         "body": "removeTrack(${1:index})",
-        "description": "SV-删除轨道"
+        "description": "Remove the index-th Track from the Project."
     },
     "blackKey": {
-        "prefix": "blackKey",
+        "prefix": "blackKey(k) → {boolean}",
         "body": "blackKey(${1:k})",
-        "description": "SV-检查音符（以MIDI数字传递）是否是钢琴上的黑色键"
+        "description": "Check whether the key (passed in as a MIDI number) is a black key on a piano. Conversions between musical and physical time in the context of a project are done by TimeAxis."
     },
     "blick2Quarter": {
         "prefix": "blick2Quarter",
