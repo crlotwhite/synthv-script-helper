@@ -1,0 +1,32 @@
+{
+    "fgetclientinfo": {
+        "prefix": "function getClientInfo",
+        "body": [
+            "function getClientInfo()",
+            "\treturn {",
+            "\t\tname = \"${1:script_name}\",",
+            "\t\tcategory = \"${2:script_category}\",",
+            "\t\tauthor = \"${3:developer_name}\",",
+            "\t\tversionNumber = ${4:script_version},",
+            "\t\tminEditorVersion = ${5:minimum_editor_version}",
+            "\t}",
+            "end"
+        ],
+        "description": "SV-script-description-lua"
+    },
+    "fmain": {
+        "prefix": "function main",
+        "body": [
+            "function main()",
+            "",
+            "\tSV:finish()",
+            "end"
+        ],
+        "description": "SV-script-entry-point-lua"
+    },
+    "sv": {
+        "prefix": "sv:",
+        "body": "sv:",
+        "description": "SV-global-object-lua"
+    }
+}

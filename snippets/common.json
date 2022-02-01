@@ -1,0 +1,742 @@
+{
+    "clearAll": {
+        "prefix": "clearAll() → {boolean}",
+        "body": "clearAll()",
+        "description": "Unselects all object types supported by this selection state. Return true if the selection has changed."
+    },
+    "clearGroups": {
+        "prefix": "clearGroups() → {boolean}",
+        "body": "clearGroups()",
+        "description": "Unselect all **NoteGroupReference**. Return true if the selection has changed."
+    },
+    "getIndexInParent": {
+        "prefix": "getIndexInParent() → {number}",
+        "body": "getIndexInParent()",
+        "description": "Get index of the current object in its parent. In Lua, this index starts from 1. In JavaScript, this index starts from 0."
+    },
+    "getparent": {
+        "prefix": "getParent() → {NestedObject|undefined}",
+        "body": "getparent()",
+        "description": "Get the parent NestedObject. Return undefined if the current object is not attached to a parent."
+    },
+    "getSelectedGroups": {
+        "prefix": "getSelectedGroups() → {array}",
+        "body": "getSelectedGroups()",
+        "description": "Get an array of selected NoteGroupReference following the order of selection."
+    },
+    "hasSelectedContent": {
+        "prefix": "hasSelectedContent() → {boolean}",
+        "body": "hasSelectedContent()",
+        "description": "Check if there's anything selected."
+    },
+    "hasSelectedGroups": {
+        "prefix": "hasSelectedGroups() → {boolean}",
+        "body": "hasSelectedGroups()",
+        "description": "Check if there is at least one NoteGroupReference selected."
+    },
+    "hasUnfinishedEdits": {
+        "prefix": "hasUnfinishedEdits() → {boolean}",
+        "body": "hasUnfinishedEdits()",
+        "description": "Check if there's any unfinished edit on the selected objects."
+    },
+    "isMemoryManaged": {
+        "prefix": "isMemoryManaged() → {boolean}",
+        "body": "isMemoryManaged()",
+        "description": "Check whether or not the current object is memory managed (i.e. garbage collected by the script environment)."
+    },
+    "getParent": {
+        "prefix": "selectGroup(reference)",
+        "body": "selectGroup(${1:Reference})",
+        "description": "Add a NoteGroupReference to the selection. The argument must be part of the currently open project."
+    },
+    "unselectGroup": {
+        "prefix": "unselectGroup(reference) → {boolean}",
+        "body": "unselectGroup(${1:Reference})",
+        "description": "Unselect a NoteGroupReference. Return true if the selection has changed."
+    },
+    "getNavigation": {
+        "prefix": "getNavigation() → {CoordinateSystem}",
+        "body": "getNavigation()",
+        "description": "Get the coordinate system for the track arrangement area."
+    },
+    "getSelection": {
+        "prefix": "getParent() → {NestedObject|undefined}",
+        "body": "getSelection()",
+        "description": "Get the parent NestedObject. Return undefined if the current object is not attached to a parent."
+    },
+    "add": {
+        "prefix": "add(b, v) → {boolean}",
+        "body": "add(${1:b}, ${2:v})",
+        "description": "Add a control point with position b (blicks) and parameter value v. If there is already a point on b, the parameter value will get updated to v. Return true if a new point has been created."
+    },
+    "clone": {
+        "prefix": "clone() → {Automation}",
+        "body": "clone()",
+        "description": "A deep copy of the current object."
+    },
+    "get": {
+        "prefix": "get(b) → {number}",
+        "body": "get(${1:b})",
+        "description": "Get the interpolated parameter value at position b (blicks). If a point exists at b, the interpolation is guaranteed to return the value for the point, regardless of the interpolation method."
+    },
+    "getAllPoints": {
+        "prefix": "getAllPoints() → {array}",
+        "body": "getAllPoints()",
+        "description": "A version of Automation#getPoints with unlimited range."
+    },
+    "getDefinition": {
+        "prefix": "getDefinition() → {object}",
+        "body": "getDefinition()",
+        "description": "Get a definition object with the following properties; displayName, typeName, range, defaultValue."
+    },
+    "getInterpolationMethod": {
+        "prefix": "getInterpolationMethod() → {string}",
+        "body": "getInterpolationMethod()",
+        "description": "Returns how values between control points are interpolated: Linear, Cosine, Cubic"
+    },
+    "getLinear": {
+        "prefix": "getLinear(b) → {number}",
+        "body": "getLinear(${1:b})",
+        "description": "A version of Automation#get that uses linear interpolation (even if Automation#getInterpolationMethod is not \"Linear\")."
+    },
+    "getPoints": {
+        "prefix": "getPoints(begin, end) → {array}",
+        "body": "getPoints(${1:begin}, ${2:end})",
+        "description": "Get an array of control points whose positions are between begin and end (blicks). Each element in the array is an array of two elements: a number for the position (blicks) and a number for the parameter value. For example, [[0, 0.1], [5000, 0], [10000, -0.1]]."
+    },
+    "getType": {
+        "prefix": "getType() → {string}",
+        "body": "getType()",
+        "description": "Get the parameter type for this Automation. See the typeName column of the table in Automation#getDefinition."
+    },
+    "remove": {
+        "prefix": "remove(b) → {boolean}",
+        "body": "remove(${1:b})",
+        "description": "Remove the control point at position b (blicks) if there is one. Return true if any point has been removed."
+    },
+    "removeba": {
+        "prefix": "remove(begin, end) → {boolean}",
+        "body": "remove(${1:begin}, ${2:end})",
+        "description": "Remove all control points between position begin (blicks) and end (blicks). Return true if any point has been removed; return false if there's no point in the specified range."
+    },
+    "removeAll": {
+        "prefix": "removeAll",
+        "body": "removeAll()",
+        "description": "Remove all control points in the Automation."
+    },
+    "simplify": {
+        "prefix": "simplify(begin, end, threshold) → {boolean}",
+        "body": "simplify(${1:begin}, ${2:end}, ${3:threshold})",
+        "description": "Simplify the parameter curve from position begin (blicks) to position end (blicks) by removing control points that do not significantly contribute to the curve's shape. If threshold is not provided, it will be set to 0.002. Higher values of threshold will result in more simplification. Return true if any point has been removed."
+    },
+    "getTimePxPerUnit": {
+        "prefix": "getTimePxPerUnit() → {number}",
+        "body": "getTimePxPerUnit()",
+        "description": "SV-获取水平方向的缩放因子"
+    },
+    "getTimeViewRange": {
+        "prefix": "getTimeViewRange",
+        "body": "getTimeViewRange()",
+        "description": "Get the scaling factor in the horizontal direction. The unit is pixels per blick so expect this to be a very small number."
+    },
+    "getValuePxPerUnit": {
+        "prefix": "getValuePxPerUnit() → {number}",
+        "body": "getValuePxPerUnit()",
+        "description": "Get the scaling factor in the vertical direction. For the piano roll, the unit is pixels per semitone."
+    },
+    "getValueViewRange": {
+        "prefix": "getValueViewRange() → {array}",
+        "body": "getValueViewRange()",
+        "description": "Get the current visible value range. It returns an array with two number elements corresponding to the lower value and upper value. For the piano roll, the unit is MIDI number (semitones); for arrangement view, its value bears no meaning."
+    },
+    "setTimeLeft": {
+        "prefix": "setTimeLeft(time)",
+        "body": "setTimeLeft(${1:time})",
+        "description": "Move the visible area so the left end is at time."
+    },
+    "setTimeRight": {
+        "prefix": "setTimeRight(time)",
+        "body": "setTimeRight(${1:time})",
+        "description": "Move the visible area so the right end is at time."
+    },
+    "setTimeScale": {
+        "prefix": "setTimeScale(scale)",
+        "body": "setTimeScale(${1:scale})",
+        "description": "Set the horizontal scaling factor to scale. The unit is pixels per blick so it expects a very small number."
+    },
+    "setValueCenter": {
+        "prefix": "setValueCenter(v)",
+        "body": "setValueCenter(${1:v})",
+        "description": "Move the visible area so the vertical center is at v."
+    },
+    "snap": {
+        "prefix": "snap(b) → {number}",
+        "body": "snap(${1:b})",
+        "description": "Round a time position b based on snapping settings."
+    },
+    "t2x": {
+        "prefix": "t2x(t) → {number}",
+        "body": "t2x(${1:t})",
+        "description": "Convert a time position to an x-position (pixels)."
+    },
+    "v2y": {
+        "prefix": "v2y(v) → {number}",
+        "body": "v2y(${1:v})",
+        "description": "Convert a value to a y-position (pixels)."
+    },
+    "x2t": {
+        "prefix": "x2t(x) → {number}",
+        "body": "x2t(${1:x})",
+        "description": "Convert an x-position (pixels) to a time position."
+    },
+    "y2v": {
+        "prefix": "y2v(y) → {number}",
+        "body": "y2v(${1:y})",
+        "description": "Convert a y-position (pixels) to a value."
+    },
+    "getCurrentGroup": {
+        "prefix": "getCurrentGroup() → {NoteGroupReference}",
+        "body": "getCurrentGroup()",
+        "description": "Get the current NoteGroupReference that the user is working inside. If the user has not entered a NoteGroupReference, return the main group of the current track."
+    },
+    "getCurrentTrack": {
+        "prefix": "getCurrentTrack() → {Track}",
+        "body": "getCurrentTrack()",
+        "description": "Get the current Track opened in the piano roll."
+    },
+    "getAttributes": {
+        "prefix": "getAttributes() → {object}",
+        "body": "getAttributes()",
+        "description": "Get an object holding note properties."
+    },
+    "getDuration": {
+        "prefix": "getDuration() → {number}",
+        "body": "getDuration()",
+        "description": "Get the duration of the note. The unit is blicks."
+    },
+    "getEnd": {
+        "prefix": "getEnd() → {number}",
+        "body": "getEnd()",
+        "description": "Get the end position (start + duration) of the note. The unit is blicks."
+    },
+    "getLyrics": {
+        "prefix": "getLyrics() → {string}",
+        "body": "getLyrics()",
+        "description": "Get the lyrics for this note."
+    },
+    "getOnset": {
+        "prefix": "getOnset() → {number}",
+        "body": "getOnset()",
+        "description": "Get the start position of the note. The unit is blicks."
+    },
+    "getPhonemes": {
+        "prefix": "getPhonemes() → {string}",
+        "body": "getPhonemes()",
+        "description": "Returns the user-specified phonemes, delimited by spaces. For example, \"hh ah ll ow\". If there's no phoneme specified, this will return an empty string, instead of the default pronunciation"
+    },
+    "getPitch": {
+        "prefix": "getPitch() → {number}",
+        "body": "getPitch()",
+        "description": "Get the pitch as a MIDI number. C4 maps to 60."
+    },
+    "setAttributes": {
+        "prefix": "setAttributes(object)",
+        "body": "setAttributes()",
+        "description": "Set note properties based on an attribute object. The attribute object does not have to be complete; only the given properties will be updated."
+    },
+    "setDuration": {
+        "prefix": "setDuration(t)",
+        "body": "setDuration(${1:t})",
+        "description": "Resize the note to duration t. The unit is blicks. This changes the end as well, but not the onset."
+    },
+    "setLyrics": {
+        "prefix": "setLyrics(lyrics)",
+        "body": "setLyrics(${1:lyrics})",
+        "description": "Change the lyrics."
+    },
+    "setOnset": {
+        "prefix": "setOnset(t)",
+        "body": "setOnset(${1:t})",
+        "description": "Move the note to start at t. The unit is blicks. This does not change the duration."
+    },
+    "setPhonemes": {
+        "prefix": "setPhonemes(phoneme_str)",
+        "body": "setPhonemes(${1:phoneme_str})",
+        "description": "Change the phonemes to phoneme_str. For example, \"hh ah ll ow\"."
+    },
+    "setPitch": {
+        "prefix": "setPitch(pitchNumber)",
+        "body": "setPitch(${1:pitchNumber})",
+        "description": "Set the note pitch to pitchNumber, a MIDI number."
+    },
+    "setTimeRange": {
+        "prefix": "setTimeRange(onset, duration)",
+        "body": "setTimeRange(${1:onset},${2:duration})",
+        "description": "Set both onset and duration. This is a shorthand for calling setOnset(onset) and setDuration(duration)."
+    },
+    "addNote": {
+        "prefix": "addNote(note) → {number}",
+        "body": "addNote(${1:note})",
+        "description": "Add a note to this NoteGroup and return the index of the added note. The notes are kept sorted by ascending onset positions."
+    },
+    "getName": {
+        "prefix": "getName() → {string}",
+        "body": "getName()",
+        "description": "Get the user-specified name of this NoteGroup."
+    },
+    "getNote": {
+        "prefix": "getNote(index) → {Note}",
+        "body": "getNote()",
+        "description": "Get the note at index. The notes inside a NoteGroup are always sorted by onset positions."
+    },
+    "getNumNotes": {
+        "prefix": "getNumNotes() → {number}",
+        "body": "getNumNotes()",
+        "description": "Get the number of notes in the NoteGroup."
+    },
+    "getParameter": {
+        "prefix": "getParameter(type) → {Automation}",
+        "body": "getParameter((${1:type})",
+        "description": "Get the Automation object for parameter type. It is case-insensitive. type should be one of the strings in the typeName column in the table shown in Automation#getDefinition."
+    },
+    "getUUID": {
+        "prefix": "getUUID() → {string}",
+        "body": "getUUID()",
+        "description": "Get the Universally Unique Identifier. Unlike the name, a UUID is unique across the project and can be used to associate a NoteGroupReference with a NoteGroup."
+    },
+    "removeNote": {
+        "prefix": "removeNote(index)",
+        "body": "removeNote(${1:index})",
+        "description": "Remove the note at index."
+    },
+    "setName": {
+        "prefix": "setName(name)",
+        "body": "setName(${1:name})",
+        "description": "Set the name of this NoteGroup."
+    },
+    "getPitchOffset": {
+        "prefix": "getPitchOffset() → {number}",
+        "body": "getPitchOffset()",
+        "description": "Get the pitch shift (semitones) applied to all notes in the target NoteGroup."
+    },
+    "getTarget": {
+        "prefix": "getTarget() → {NoteGroup}",
+        "body": "getTarget()",
+        "description": "Get the target NoteGroup."
+    },
+    "getTimeOffset": {
+        "prefix": "getTimeOffset() → {number}",
+        "body": "getTimeOffset()",
+        "description": "Get the time offset (blicks) applied to all notes in the target NoteGroup."
+    },
+    "getVoice": {
+        "prefix": "getVoice() → {object}",
+        "body": "getVoice()",
+        "description": "Get an object holding the default voice properties for this group, similar to Note#getAttributes."
+    },
+    "isInstrumental": {
+        "prefix": "isInstrumental() → {boolean}",
+        "body": "isInstrumental()",
+        "description": "Whether this NoteGroupReference refers to an external audio file. If so, it must not refer to a NoteGroup."
+    },
+    "isMain": {
+        "prefix": "isMain() → {boolean}",
+        "body": "isMain()",
+        "description": "Whether this NoteGroupReference refers to the parent Track's main group."
+    },
+    "setPitchOffset": {
+        "prefix": "setPitchOffset(pitchOffset)",
+        "body": "setPitchOffset(${1:pitchOffset})",
+        "description": "Set the pitch offset to pitchOffset (semitones)."
+    },
+    "setTarget": {
+        "prefix": "setTarget",
+        "body": "setTarget(${1:group})",
+        "description": "SV-设置目标音符组"
+    },
+    "setTimeOffset": {
+        "prefix": "setTimeOffset",
+        "body": "setTimeOffset(${1:blickOffset})",
+        "description": "SV-将时间偏移设置为"
+    },
+    "setVoice": {
+        "prefix": "setVoice",
+        "body": "setVoice()",
+        "description": "SV-基于属性对象设置语音属性"
+    },
+    "getPlayhead": {
+        "prefix": "getPlayhead",
+        "body": "getPlayhead()",
+        "description": "SV-以秒为单位获取当前播放头位置"
+    },
+    "getStatus": {
+        "prefix": "getStatus",
+        "body": "getStatus()",
+        "description": "SV-获取当前播放状态"
+    },
+    "loop": {
+        "prefix": "loop",
+        "body": "loop(${1:tBegin}, ${2:tEnd})",
+        "description": "SV-在begin和end之间开始循环"
+    },
+    "pause": {
+        "prefix": "pause",
+        "body": "pause()",
+        "description": "SV-暂停"
+    },
+    "play": {
+        "prefix": "play",
+        "body": "play()",
+        "description": "SV-播放"
+    },
+    "seek": {
+        "prefix": "seek",
+        "body": "seek()",
+        "description": "SV-将播放头位置设置为"
+    },
+    "stop": {
+        "prefix": "stop",
+        "body": "stop()",
+        "description": "SV-停止播放，将播放头重置为播放开始位置"
+    },
+    "addNoteGroup": {
+        "prefix": "addNoteGroup",
+        "body": "addNoteGroup(${1:group}, ${2:suggestedIndex})",
+        "description": "SV-插入项目库"
+    },
+    "addTrack": {
+        "prefix": "addTrack",
+        "body": "addTrack()",
+        "description": "SV-添加音轨"
+    },
+    "getFileName": {
+        "prefix": "getFileName",
+        "body": "getFileName()",
+        "description": "SV-获取文件名"
+    },
+    "getNoteGroup": {
+        "prefix": "getNoteGroup",
+        "body": "getNoteGroup(${1:id})",
+        "description": "SV-获取音符组"
+    },
+    "getNumNoteGroupsInLibrary": {
+        "prefix": "getNumNoteGroupsInLibrary",
+        "body": "getNumNoteGroupsInLibrary()",
+        "description": "SV-获取项目库中的音符组数"
+    },
+    "getNumTracks": {
+        "prefix": "getNumTracks",
+        "body": "getNumTracks()",
+        "description": "SV-获取音轨数"
+    },
+    "getTimeAxis": {
+        "prefix": "getTimeAxis",
+        "body": "getTimeAxis()",
+        "description": "SV-获取timeaxis对象"
+    },
+    "getTrack": {
+        "prefix": "getTrack",
+        "body": "getTrack(${1:index})",
+        "description": "SV-获取音符的轨道"
+    },
+    "newUndoRecord": {
+        "prefix": "newUndoRecord",
+        "body": "newUndoRecord()",
+        "description": "SV-为此添加新的撤消记录"
+    },
+    "removeNoteGroup": {
+        "prefix": "removeNoteGroup",
+        "body": "removeNoteGroup(${1:index})",
+        "description": "SV-删除音符组"
+    },
+    "removeTrack": {
+        "prefix": "removeTrack",
+        "body": "removeTrack(${1:index})",
+        "description": "SV-删除轨道"
+    },
+    "blackKey": {
+        "prefix": "blackKey",
+        "body": "blackKey(${1:k})",
+        "description": "SV-检查音符（以MIDI数字传递）是否是钢琴上的黑色键"
+    },
+    "blick2Quarter": {
+        "prefix": "blick2Quarter",
+        "body": "blick2Quarter(${1:b})",
+        "description": "SV-从闪烁数转换为季度数"
+    },
+    "blick2Seconds": {
+        "prefix": "blick2Seconds",
+        "body": "blick2Seconds(${1:b},${2:bpm})",
+        "description": "SV-使用指定的每分钟节拍从闪烁转换为秒"
+    },
+    "blickRoundDiv": {
+        "prefix": "blickRoundDiv",
+        "body": "blickRoundDiv(${1:dividend},${2:divisor})",
+        "description": "SV-（闪烁）的舍入除法（闪烁）"
+    },
+    "blickRoundTo": {
+        "prefix": "blickRoundTo",
+        "body": "blickRoundTo(${1:b},${2:interval})",
+        "description": "SV-返回闪烁中最接近的倍数"
+    },
+    "create": {
+        "prefix": "create",
+        "body": "create(${1:type})",
+        "description": "SV-创建新对象"
+    },
+    "freq2Pitch": {
+        "prefix": "freq2Pitch",
+        "body": "freq2Pitch()",
+        "description": "SV-将 Hz 的频率转换为 MIDI 编号"
+    },
+    "getHostClipboard": {
+        "prefix": "getHostClipboard",
+        "body": "getHostClipboard()",
+        "description": "SV-获取系统剪贴板上的文本"
+    },
+    "getArrangement": {
+        "prefix": "getArrangement",
+        "body": "getArrangement()",
+        "description": "SV-获取排列视图的状态对象"
+    },
+    "getHostInfo": {
+        "prefix": "getHostInfo",
+        "body": "getHostInfo()",
+        "description": "SV-获取具有系统属性的对象"
+    },
+    "getMainEditor": {
+        "prefix": "getMainEditor",
+        "body": "getMainEditor(${1:group})",
+        "description": "SV-获取钢琴卷的UI状态对象"
+    },
+    "getPhonemesForGroup": {
+        "prefix": "getPhonemesForGroup",
+        "body": "getPhonemesForGroup()",
+        "description": "SV-获取组中所有音符的音素"
+    },
+    "getPlayback": {
+        "prefix": "getPlayback",
+        "body": "getPlayback()",
+        "description": "SV-获取用于控制播放的UI状态对象"
+    },
+    "getProject": {
+        "prefix": "getProject",
+        "body": "getProject()",
+        "description": "SV-获取当前打开的项目"
+    },
+    "pitch2freq": {
+        "prefix": "pitch2freq",
+        "body": "pitch2freq(${1:p})",
+        "description": "SV-将MIDI编号转换为Hz频率"
+    },
+    "quarter2Blick": {
+        "prefix": "quarter2Blick",
+        "body": "quarter2Blick(${1:q})",
+        "description": "SV-从季度数转换为闪烁数"
+    },
+    "seconds2Blick": {
+        "prefix": "seconds2Blick",
+        "body": "seconds2Blick(${1:s}, ${2:bpm})",
+        "description": "SV-使用每分钟指定节拍从秒转换为闪烁"
+    },
+    "setHostClipboard": {
+        "prefix": "setHostClipboard",
+        "body": "setHostClipboard(${1:text})",
+        "description": "SV-设置系统剪贴板"
+    },
+    "setTimeout": {
+        "prefix": "setTimeout",
+        "body": "setTimeout(${1:timeOut}, ${2:callback})",
+        "description": "SV-安排毫秒后延迟呼叫"
+    },
+    "showCustomDialog": {
+        "prefix": "showCustomDialog",
+        "body": "showCustomDialog(${1:form})",
+        "description": "SV-返回来自用户的输入"
+    },
+    "showCustomDialogAsync": {
+        "prefix": "showCustomDialogAsync",
+        "body": "showCustomDialogAsync(${1:form}, ${2:callback})",
+        "description": "SV-显示form中定义的自定义对话框，而不阻止脚本执行"
+    },
+    "showInputBox": {
+        "prefix": "showInputBox",
+        "body": "showInputBox(${1:title}, ${2:message}, ${3:defaultText})",
+        "description": "SV-返回来自用户的文本输入"
+    },
+    "showInputBoxAsync": {
+        "prefix": "showInputBoxAsync",
+        "body": "showInputBoxAsync(${1:title}, ${2:message}, ${3:defaultText}, ${4:callback})",
+        "description": "SV-返回来自用户的文本输入而不阻止脚本执行"
+    },
+    "showMessageBox": {
+        "prefix": "showMessageBox",
+        "body": "showMessageBox(${1:title}, ${2:message})",
+        "description": "SV-阻止脚本执行，直到用户关闭消息框"
+    },
+    "showMessageBoxAsync": {
+        "prefix": "showMessageBoxAsync",
+        "body": "showMessageBoxAsync(${1:title}, ${2:message}, ${3:callback})",
+        "description": "SV-在不阻止脚本执行的情况下弹出消息框"
+    },
+    "showOkCancelBox": {
+        "prefix": "showOkCancelBox",
+        "body": "showOkCancelBox(${1:title}, ${2:message})",
+        "description": "SV-如果按下确定按钮，则返回 true"
+    },
+    "showOkCancelBoxAsync": {
+        "prefix": "showOkCancelBoxAsync",
+        "body": "showOkCancelBoxAsync(${1:title}, ${2:message}, ${3:callback})",
+        "description": "SV-显示一个包含确定按钮和取消按钮的消息框，而不会阻止脚本执行"
+    },
+    "showYesNoCancelBox": {
+        "prefix": "showYesNoCancelBox",
+        "body": "showYesNoCancelBox(${1:title}, ${2:message})",
+        "description": "SV-返回是，否或取消"
+    },
+    "showYesNoCancelBoxAsync": {
+        "prefix": "showYesNoCancelBoxAsync",
+        "body": "showYesNoCancelBoxAsync(${1:title}, ${2:message}, ${3:callback})",
+        "description": "SV-返回是，否或取消，而不会阻止脚本执行"
+    },
+    "T": {
+        "prefix": "T",
+        "body": "T(${1:text})",
+        "description": "SV-基于当前UI语言设置获取t的本地化版本"
+    },
+    "addMeasureMark": {
+        "prefix": "addMeasureMark",
+        "body": "addMeasureMark(${1:measure}, ${2:nomin}, ${3:denom})",
+        "description": "SV-在位置（度量值编号）插入/度量标记"
+    },
+    "addTempoMark": {
+        "prefix": "addTempoMark",
+        "body": "addTempoMark(${1:b}, ${2:bpm})",
+        "description": "SV-插入一个节奏标记"
+    },
+    "getAllMeasureMarks": {
+        "prefix": "getAllMeasureMarks",
+        "body": "getAllMeasureMarks()",
+        "description": "SV-在此获取所有测量标记"
+    },
+    "getAllTempoMarks": {
+        "prefix": "getAllTempoMarks",
+        "body": "getAllTempoMarks()",
+        "description": "SV-得到所有的节奏标记"
+    },
+    "getBlickFromSeconds": {
+        "prefix": "getBlickFromSeconds",
+        "body": "getBlickFromSeconds(${1:t})",
+        "description": "SV-将物理时间（秒）转换为音乐时间（闪烁）"
+    },
+    "getMeasureAt": {
+        "prefix": "getMeasureAt",
+        "body": "getMeasureAt(${1:b})",
+        "description": "SV-获取位置（闪烁）的度量编号"
+    },
+    "getMeasureMarkAt": {
+        "prefix": "getMeasureMarkAt",
+        "body": "getMeasureMarkAt(${1:measureNumber})",
+        "description": "SV-在度量值时获取度量值标记"
+    },
+    "getSecondsFromBlick": {
+        "prefix": "getSecondsFromBlick",
+        "body": "getSecondsFromBlick(${1:b})",
+        "description": "SV-将音乐时间（闪烁）转换为物理时间（秒）"
+    },
+    "getMeasureMarkAtBlick": {
+        "prefix": "getMeasureMarkAtBlick",
+        "body": "getMeasureMarkAtBlick(${1:b})",
+        "description": "SV-获取在位置有效（闪烁）的度量值标记"
+    },
+    "getTempoMarkAt": {
+        "prefix": "getTempoMarkAt",
+        "body": "getTempoMarkAt(${1:b})",
+        "description": "SV-获取在位置有效的节奏标记"
+    },
+    "removeMeasureMark": {
+        "prefix": "removeMeasureMark",
+        "body": "removeMeasureMark(${1:measure})",
+        "description": "SV-删除度量值编号的度量值标记"
+    },
+    "removeTempoMark": {
+        "prefix": "removeTempoMark",
+        "body": "removeTempoMark(${1:b})",
+        "description": "SV-移除位置（闪烁）时的节奏标记"
+    },
+    "addGroupReference": {
+        "prefix": "addGroupReference",
+        "body": "addGroupReference(${1:group})",
+        "description": "SV-为此添加音符组轨道并返回添加组的索引"
+    },
+    "getDisplayColor": {
+        "prefix": "getDisplayColor",
+        "body": "getDisplayColor()",
+        "description": "SV-将曲目的颜色作为十六进制字符串"
+    },
+    "getDisplayOrder": {
+        "prefix": "getDisplayOrder",
+        "body": "getDisplayOrder()",
+        "description": "SV-获取父项目内轨道的显示顺序"
+    },
+    "getGroupReference": {
+        "prefix": "getGroupReference",
+        "body": "getGroupReference()",
+        "description": "SV-获取音符组参考"
+    },
+    "getNumGroups": {
+        "prefix": "getNumGroups",
+        "body": "getNumGroups()",
+        "description": "SV-获取轨道数"
+    },
+    "isBounced": {
+        "prefix": "isBounced",
+        "body": "isBounced()",
+        "description": "SV-是否导出到文件的选项"
+    },
+    "removeGroupReference": {
+        "prefix": "removeGroupReference",
+        "body": "removeGroupReference(${1:index})",
+        "description": "SV-从中删除音符组轨道"
+    },
+    "setBounced": {
+        "prefix": "setBounced",
+        "body": "setBounced(${1:enabled})",
+        "description": "SV-设置是否导出到文件"
+    },
+    "setDisplayColor": {
+        "prefix": "setDisplayColor",
+        "body": "setDisplayColor()",
+        "description": "SV-将显示颜色设置为十六进制字符串"
+    },
+    "clearNotes": {
+        "prefix": "clearNotes",
+        "body": "clearNotes()",
+        "description": "SV-取消选择所有音符"
+    },
+    "getSelectedNotes": {
+        "prefix": "getSelectedNotes",
+        "body": "getSelectedNotes()",
+        "description": "SV-按照选择顺序获取所选音符的数组"
+    },
+    "hasSelectedNotes": {
+        "prefix": "hasSelectedNotes",
+        "body": "hasSelectedNotes()",
+        "description": "SV-检查是否至少选择了一个音符组参考"
+    },
+    "selectGroup": {
+        "prefix": "selectGroup",
+        "body": "selectGroup(${1:reference})",
+        "description": "SV-向所选内容添加音符组轨道"
+    },
+    "selectNote": {
+        "prefix": "selectNote",
+        "body": "selectNote(${1:note})",
+        "description": "SV-选择音符"
+    },
+    "unselectNote": {
+        "prefix": "unselectNote",
+        "body": "unselectNote(${1:note)",
+        "description": "SV-取消选择音符"
+    }
+}

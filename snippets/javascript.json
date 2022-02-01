@@ -1,0 +1,32 @@
+{
+	"fgetclientinfo": {
+        "prefix": "function getClientInfo",
+        "body":[
+			"function getClientInfo() {",
+			"\t\treturn {",
+			"\t\t\"name\" : \"${1:script_name}\",",
+			"\t\t\"category\" : \"${2:script_category}\",",
+			"\t\t\"author\" : \"${3:developer_name}\",",
+			"\t\t\"versionNumber\" : ${4:script_version},",
+			"\t\t\"minEditorVersion\" : ${5:minimum_editor_version}",
+			"\t};",
+			"}"
+		],
+        "description": "SV-script-description-js"
+	},
+	"fmain": {
+        "prefix": "function main",
+        "body":[
+			"function main(){",
+			"",
+			"\tSV.finish();",
+		  	"}"
+		],
+        "description": "SV-script-entry-point-js"
+    },
+    "sv": {
+        "prefix": "sv.",
+        "body": "sv.",
+        "description": "SV-global-object-js"
+    }
+}
