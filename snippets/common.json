@@ -460,283 +460,283 @@
         "description": "Check whether the key (passed in as a MIDI number) is a black key on a piano. Conversions between musical and physical time in the context of a project are done by TimeAxis."
     },
     "blick2Quarter": {
-        "prefix": "blick2Quarter",
+        "prefix": "blick2Quarter(b) → {number}",
         "body": "blick2Quarter(${1:b})",
-        "description": "SV-从闪烁数转换为季度数"
+        "description": "Convert b from number of blicks into number of quarters. Equivalent to b / SV.QUARTER. Conversions between musical and physical time in the context of a project are done by TimeAxis."
     },
     "blick2Seconds": {
-        "prefix": "blick2Seconds",
+        "prefix": "blick2Seconds(b, bpm) → {number}",
         "body": "blick2Seconds(${1:b},${2:bpm})",
-        "description": "SV-使用指定的每分钟节拍从闪烁转换为秒"
+        "description": "Convert b from blicks into seconds with the specified beats per minute bpm. Equivalent to b / SV.QUARTER * 60 / bpm. Conversions between musical and physical time in the context of a project are done by TimeAxis."
     },
     "blickRoundDiv": {
-        "prefix": "blickRoundDiv",
+        "prefix": "blickRoundDiv(dividend, divisor) → {number}",
         "body": "blickRoundDiv(${1:dividend},${2:divisor})",
-        "description": "SV-（闪烁）的舍入除法（闪烁）"
+        "description": "Rounded division of dividend (blicks) over divisor (blicks). Conversions between musical and physical time in the context of a project are done by TimeAxis."
     },
     "blickRoundTo": {
-        "prefix": "blickRoundTo",
+        "prefix": "blickRoundTo(b, interval) → {number}",
         "body": "blickRoundTo(${1:b},${2:interval})",
-        "description": "SV-返回闪烁中最接近的倍数"
+        "description": "Returns the closest multiple of interval (blicks) from b (blick). Equivalent to blickRoundDiv(b, interval) * interval. Conversions between musical and physical time in the context of a project are done by TimeAxis."
     },
     "create": {
-        "prefix": "create",
+        "prefix": "create(type) → {object}",
         "body": "create(${1:type})",
-        "description": "SV-创建新对象"
+        "description": "Create a new object. type can be one of the following type-specifying strings."
     },
     "freq2Pitch": {
-        "prefix": "freq2Pitch",
+        "prefix": "freq2Pitch(f) → {number}",
         "body": "freq2Pitch()",
-        "description": "SV-将 Hz 的频率转换为 MIDI 编号"
+        "description": "Convert a frequency in Hz to a MIDI number (semitones, where C4 is 60). Conversions between musical and physical time in the context of a project are done by TimeAxis."
     },
     "getHostClipboard": {
-        "prefix": "getHostClipboard",
+        "prefix": "getHostClipboard() → {string}",
         "body": "getHostClipboard()",
-        "description": "SV-获取系统剪贴板上的文本"
+        "description": "Get the text on the system clipboard."
     },
     "getArrangement": {
-        "prefix": "getArrangement",
+        "prefix": "getArrangement() → {ArrangementView}",
         "body": "getArrangement()",
-        "description": "SV-获取排列视图的状态对象"
+        "description": "Get the UI state object for arrangement view."
     },
     "getHostInfo": {
-        "prefix": "getHostInfo",
+        "prefix": "getHostInfo() → {object}",
         "body": "getHostInfo()",
-        "description": "SV-获取具有系统属性的对象"
+        "description": "Get an object with the following properties; osType, osName, hostName, hostVersion, hostVersionNumber, languageCode."
     },
     "getMainEditor": {
-        "prefix": "getMainEditor",
+        "prefix": "getMainEditor() → {MainEditorView}",
         "body": "getMainEditor(${1:group})",
-        "description": "SV-获取钢琴卷的UI状态对象"
+        "description": "Get the UI state object for the piano roll."
     },
     "getPhonemesForGroup": {
-        "prefix": "getPhonemesForGroup",
+        "prefix": "getPhonemesForGroup(group) → {array}",
         "body": "getPhonemesForGroup()",
-        "description": "SV-获取组中所有音符的音素"
+        "description": "Get the phonemes for all notes in a group (passed in as a group reference). The group must be part of the currently open project."
     },
     "getPlayback": {
-        "prefix": "getPlayback",
+        "prefix": "getPlayback() → {PlayBackControl}",
         "body": "getPlayback()",
-        "description": "SV-获取用于控制播放的UI状态对象"
+        "description": "Get the UI state object for controlling the playback."
     },
     "getProject": {
-        "prefix": "getProject",
+        "prefix": "getProject() → {Project}",
         "body": "getProject()",
-        "description": "SV-获取当前打开的项目"
+        "description": "Get the currently open project."
     },
     "pitch2freq": {
-        "prefix": "pitch2freq",
+        "prefix": "pitch2freq(p) → {number}",
         "body": "pitch2freq(${1:p})",
-        "description": "SV-将MIDI编号转换为Hz频率"
+        "description": "Convert a MIDI number (semitones, where C4 is 60) to a frequency in Hz. Conversions between musical and physical time in the context of a project are done by TimeAxis."
     },
     "quarter2Blick": {
-        "prefix": "quarter2Blick",
+        "prefix": "quarter2Blick(q) → {number}",
         "body": "quarter2Blick(${1:q})",
-        "description": "SV-从季度数转换为闪烁数"
+        "description": "Convert q from number of quarters into number of blick. Equivalent to q * SV.QUARTER. Conversions between musical and physical time in the context of a project are done by TimeAxis."
     },
     "seconds2Blick": {
-        "prefix": "seconds2Blick",
+        "prefix": "seconds2Blick(s, bpm) → {number}",
         "body": "seconds2Blick(${1:s}, ${2:bpm})",
-        "description": "SV-使用每分钟指定节拍从秒转换为闪烁"
+        "description": "Convert s from seconds into blicks with the specified beats per minute bpm. Equivalent to s / 60 * bpm * SV.QUARTER. Conversions between musical and physical time in the context of a project are done by TimeAxis."
     },
     "setHostClipboard": {
-        "prefix": "setHostClipboard",
+        "prefix": "setHostClipboard(text)",
         "body": "setHostClipboard(${1:text})",
-        "description": "SV-设置系统剪贴板"
+        "description": "Set the system clipboard."
     },
     "setTimeout": {
-        "prefix": "setTimeout",
+        "prefix": "setTimeout(timeOut, callback)",
         "body": "setTimeout(${1:timeOut}, ${2:callback})",
-        "description": "SV-安排毫秒后延迟呼叫"
+        "description": "Schedule a delayed call to callback after timeOut milliseconds. After calling setTimeout, the script will continue instead of immediately executing callback. The callback function is pushed onto a queue and delayed. This is not a preemptive callback, i.e. the execution of callback will not interrupt the currently running task."
     },
     "showCustomDialog": {
-        "prefix": "showCustomDialog",
+        "prefix": "showCustomDialog(form) → {object}",
         "body": "showCustomDialog(${1:form})",
-        "description": "SV-返回来自用户的输入"
+        "description": "The synchronous version of SV#showCustomDialogAsync that blocks the script execution until the user closes the dialog. It returns the inputs (the completed form) from the user."
     },
     "showCustomDialogAsync": {
-        "prefix": "showCustomDialogAsync",
+        "prefix": "showCustomDialogAsync(form, callback)",
         "body": "showCustomDialogAsync(${1:form}, ${2:callback})",
-        "description": "SV-显示form中定义的自定义对话框，而不阻止脚本执行"
+        "description": "Display a custom dialog defined in form, without blocking the script execution. callback will be invoked once the dialog is closed. The callback function takes one argument which contains the results. See Custom Dialogs for more information."
     },
     "showInputBox": {
-        "prefix": "showInputBox",
+        "prefix": "showInputBox(title, message, defaultText) → {string}",
         "body": "showInputBox(${1:title}, ${2:message}, ${3:defaultText})",
-        "description": "SV-返回来自用户的文本输入"
+        "description": "The synchronous version of SV#showInputBoxAsync that blocks the script execution until the user closes the dialog. It returns the text input from the user."
     },
     "showInputBoxAsync": {
-        "prefix": "showInputBoxAsync",
+        "prefix": "showInputBoxAsync(title, message, defaultText, callback)",
         "body": "showInputBoxAsync(${1:title}, ${2:message}, ${3:defaultText}, ${4:callback})",
-        "description": "SV-返回来自用户的文本输入而不阻止脚本执行"
+        "description": "Display a dialog with a text box and an \"OK\" button, without blocking the script execution. callback will be invoked once the dialog is closed. The callback function takes one string argument that is the content of the text box."
     },
     "showMessageBox": {
-        "prefix": "showMessageBox",
+        "prefix": "showMessageBox(title, message)",
         "body": "showMessageBox(${1:title}, ${2:message})",
-        "description": "SV-阻止脚本执行，直到用户关闭消息框"
+        "description": "The synchronous version of SV#showMessageBoxAsync that blocks the script execution until the user closes the message box."
     },
     "showMessageBoxAsync": {
-        "prefix": "showMessageBoxAsync",
+        "prefix": "showMessageBoxAsync(title, message, callback)",
         "body": "showMessageBoxAsync(${1:title}, ${2:message}, ${3:callback})",
-        "description": "SV-在不阻止脚本执行的情况下弹出消息框"
+        "description": "Cause a message box to pop up without blocking the script execution. If a callback is given, it is invoked once the message box is closed. The callback function takes no argument."
     },
     "showOkCancelBox": {
-        "prefix": "showOkCancelBox",
+        "prefix": "showOkCancelBox(title, message) → {boolean}",
         "body": "showOkCancelBox(${1:title}, ${2:message})",
-        "description": "SV-如果按下确定按钮，则返回 true"
+        "description": "The synchronous version of SV#showOkCancelBoxAsync that blocks the script execution until the user closes the message box. It returns true if \"OK\" button is pressed."
     },
     "showOkCancelBoxAsync": {
-        "prefix": "showOkCancelBoxAsync",
+        "prefix": "showOkCancelBoxAsync(title, message, callback)",
         "body": "showOkCancelBoxAsync(${1:title}, ${2:message}, ${3:callback})",
-        "description": "SV-显示一个包含确定按钮和取消按钮的消息框，而不会阻止脚本执行"
+        "description": "Display a message box with an \"OK\" button and a \"Cancel\" button, without blocking the script execution. callback will be invoked once the message box is closed. The callback function takes one boolean argument that is true if \"OK\" button is pressed."
     },
     "showYesNoCancelBox": {
-        "prefix": "showYesNoCancelBox",
+        "prefix": "showYesNoCancelBox(title, message) → {string}",
         "body": "showYesNoCancelBox(${1:title}, ${2:message})",
-        "description": "SV-返回是，否或取消"
+        "description": "The synchronous version of SV#showYesNoCancelBoxAsync that blocks the script execution until the user closes the message box. It returns \"yes\", \"no\" or \"cancel\"."
     },
     "showYesNoCancelBoxAsync": {
-        "prefix": "showYesNoCancelBoxAsync",
+        "prefix": "showYesNoCancelBoxAsync(title, message, callback)",
         "body": "showYesNoCancelBoxAsync(${1:title}, ${2:message}, ${3:callback})",
-        "description": "SV-返回是，否或取消，而不会阻止脚本执行"
+        "description": "Display a message box with a \"Yes\" button, an \"No\" button and a \"Cancel\" button, without blocking the script execution. callback will be invoked once the message box is closed. The callback function takes one string argument that can be \"yes\", \"no\" or \"cancel\"."
     },
     "T": {
-        "prefix": "T",
+        "prefix": "T(text) → {string}",
         "body": "T(${1:text})",
-        "description": "SV-基于当前UI语言设置获取t的本地化版本"
+        "description": "Get a localized version of text based on the current UI language settings. See Localization for more information."
     },
     "addMeasureMark": {
-        "prefix": "addMeasureMark",
+        "prefix": "addMeasureMark(measure, nomin, denom)",
         "body": "addMeasureMark(${1:measure}, ${2:nomin}, ${3:denom})",
-        "description": "SV-在位置（度量值编号）插入/度量标记"
+        "description": "Insert a nomin/denom measure mark at position measure (a measure number). If a measure mark exists at measure, update the information."
     },
     "addTempoMark": {
-        "prefix": "addTempoMark",
+        "prefix": "addTempoMark(b, bpm)",
         "body": "addTempoMark(${1:b}, ${2:bpm})",
-        "description": "SV-插入一个节奏标记"
+        "description": "Insert a tempo mark with beats per minute of bpm at position b (blicks). If a tempo mark exists at position b, update the BPM."
     },
     "getAllMeasureMarks": {
-        "prefix": "getAllMeasureMarks",
+        "prefix": "getAllMeasureMarks() → {array}",
         "body": "getAllMeasureMarks()",
-        "description": "SV-在此获取所有测量标记"
+        "description": "Get all measure marks in this TimeAxis. See TimeAxis#getMeasureMarkAt."
     },
     "getAllTempoMarks": {
-        "prefix": "getAllTempoMarks",
+        "prefix": "getAllTempoMarks() → {array}",
         "body": "getAllTempoMarks()",
-        "description": "SV-得到所有的节奏标记"
+        "description": "Get all tempo marks in this TimeAxis. See TimeAxis#getTempoMarkAt."
     },
     "getBlickFromSeconds": {
-        "prefix": "getBlickFromSeconds",
+        "prefix": "getBlickFromSeconds(t) → {number}",
         "body": "getBlickFromSeconds(${1:t})",
-        "description": "SV-将物理时间（秒）转换为音乐时间（闪烁）"
+        "description": "Convert physical time t (second) to musical time (blicks)."
     },
     "getMeasureAt": {
-        "prefix": "getMeasureAt",
+        "prefix": "getMeasureAt(b) → {number}",
         "body": "getMeasureAt(${1:b})",
-        "description": "SV-获取位置（闪烁）的度量编号"
+        "description": "Get the measure number at position b (blicks)."
     },
     "getMeasureMarkAt": {
-        "prefix": "getMeasureMarkAt",
+        "prefix": "getMeasureMarkAt(measureNumber) → {object}",
         "body": "getMeasureMarkAt(${1:measureNumber})",
-        "description": "SV-在度量值时获取度量值标记"
+        "description": "Get the measure mark at measure measureNumber. The returned object contains the following properties."
     },
     "getSecondsFromBlick": {
-        "prefix": "getSecondsFromBlick",
+        "prefix": "getSecondsFromBlick(b) → {number}",
         "body": "getSecondsFromBlick(${1:b})",
-        "description": "SV-将音乐时间（闪烁）转换为物理时间（秒）"
+        "description": "Convert musical time b (blicks) to physical time (seconds)."
     },
     "getMeasureMarkAtBlick": {
-        "prefix": "getMeasureMarkAtBlick",
+        "prefix": "getMeasureMarkAtBlick(b) → {object}",
         "body": "getMeasureMarkAtBlick(${1:b})",
-        "description": "SV-获取在位置有效（闪烁）的度量值标记"
+        "description": "Get the measure mark that is effective at position b (blicks). For the returned object, see TimeAxis#getMeasureMarkAt."
     },
     "getTempoMarkAt": {
-        "prefix": "getTempoMarkAt",
+        "prefix": "getTempoMarkAt(b) → {TempoMark}",
         "body": "getTempoMarkAt(${1:b})",
-        "description": "SV-获取在位置有效的节奏标记"
+        "description": "Get the tempo mark that is effective at position b (blicks). The returned object contains the following properties; position, positionSeconds, bpm."
     },
     "removeMeasureMark": {
-        "prefix": "removeMeasureMark",
+        "prefix": "removeMeasureMark(measure) → {boolean}",
         "body": "removeMeasureMark(${1:measure})",
-        "description": "SV-删除度量值编号的度量值标记"
+        "description": "Remove the measure mark at measure number measure. If a measure mark exists at measure, return true."
     },
     "removeTempoMark": {
-        "prefix": "removeTempoMark",
+        "prefix": "removeTempoMark(b) → {boolean}",
         "body": "removeTempoMark(${1:b})",
-        "description": "SV-移除位置（闪烁）时的节奏标记"
+        "description": "Remove the tempo mark at position b (blicks). If a tempo mark exists at position b, return true."
     },
     "addGroupReference": {
-        "prefix": "addGroupReference",
+        "prefix": "addGroupReference(group) → {number}",
         "body": "addGroupReference(${1:group})",
-        "description": "SV-为此添加音符组轨道并返回添加组的索引"
+        "description": "Add a NoteGroupReference to this Track and return the index of the added group. It keeps all groups sorted by onset position."
     },
     "getDisplayColor": {
-        "prefix": "getDisplayColor",
+        "prefix": "getDisplayColor() → {string}",
         "body": "getDisplayColor()",
-        "description": "SV-将曲目的颜色作为十六进制字符串"
+        "description": "Get the track's color as a hex string."
     },
     "getDisplayOrder": {
-        "prefix": "getDisplayOrder",
+        "prefix": "getDisplayOrder() → {number}",
         "body": "getDisplayOrder()",
-        "description": "SV-获取父项目内轨道的显示顺序"
+        "description": "Get the display order of the track inside the parent Project. A track's display order can be different from its storage index. The order of tracks as displayed in arrangement view is always based on the display order."
     },
     "getGroupReference": {
-        "prefix": "getGroupReference",
+        "prefix": "getGroupReference(index) → {NoteGroupReference}",
         "body": "getGroupReference()",
-        "description": "SV-获取音符组参考"
+        "description": "Get the index-th NoteGroupReference. The first is always the main group, followed by groups that refer to NoteGroup in the project library. The groups are sorted in ascending onset positions."
     },
     "getNumGroups": {
-        "prefix": "getNumGroups",
+        "prefix": "getNumGroups() → {number}",
         "body": "getNumGroups()",
-        "description": "SV-获取轨道数"
+        "description": "Get the number of NoteGroupReference in this Track, including the main group."
     },
     "isBounced": {
-        "prefix": "isBounced",
+        "prefix": "isBounced() → {boolean}",
         "body": "isBounced()",
-        "description": "SV-是否导出到文件的选项"
+        "description": "An option for whether or not to be exported to files, shown in Render Panel."
     },
     "removeGroupReference": {
-        "prefix": "removeGroupReference",
+        "prefix": "removeGroupReference(index)",
         "body": "removeGroupReference(${1:index})",
-        "description": "SV-从中删除音符组轨道"
+        "description": "Remove the index-th NoteGroupReference from this Track."
     },
     "setBounced": {
-        "prefix": "setBounced",
+        "prefix": "setBounced(enabled)",
         "body": "setBounced(${1:enabled})",
-        "description": "SV-设置是否导出到文件"
+        "description": "Set whether or not to have the Track exported to files. See Track#isBounced."
     },
     "setDisplayColor": {
-        "prefix": "setDisplayColor",
+        "prefix": "setDisplayColor(colorStr)",
         "body": "setDisplayColor()",
-        "description": "SV-将显示颜色设置为十六进制字符串"
+        "description": "Set the display color of the Track to a hex string."
     },
     "clearNotes": {
-        "prefix": "clearNotes",
+        "prefix": "clearNotes() → {boolean}",
         "body": "clearNotes()",
-        "description": "SV-取消选择所有音符"
+        "description": "Unselect all notes. Return true if the selection has changed."
     },
     "getSelectedNotes": {
-        "prefix": "getSelectedNotes",
+        "prefix": "getSelectedNotes() → {array}",
         "body": "getSelectedNotes()",
-        "description": "SV-按照选择顺序获取所选音符的数组"
+        "description": "Get an array of selected Note following the order of selection."
     },
     "hasSelectedNotes": {
-        "prefix": "hasSelectedNotes",
+        "prefix": "hasSelectedNotes() → {boolean}",
         "body": "hasSelectedNotes()",
-        "description": "SV-检查是否至少选择了一个音符组参考"
+        "description": "Check if there is at least one Note selected."
     },
     "selectGroup": {
-        "prefix": "selectGroup",
+        "prefix": "selectGroup(reference)",
         "body": "selectGroup(${1:reference})",
-        "description": "SV-向所选内容添加音符组轨道"
+        "description": "Add a NoteGroupReference to the selection. The argument must be part of the currently open project."
     },
     "selectNote": {
-        "prefix": "selectNote",
+        "prefix": "selectNote(note)",
         "body": "selectNote(${1:note})",
-        "description": "SV-选择音符"
+        "description": "Select a Note. The note must be inside the current NoteGroupReference opened in the piano roll (see MainEditorView#getCurrentGroup)."
     },
     "unselectNote": {
-        "prefix": "unselectNote",
+        "prefix": "unselectNote(note) → {boolean}",
         "body": "unselectNote(${1:note)",
-        "description": "SV-取消选择音符"
+        "description": "Unselect a Note. Return true if the selection has changed."
     }
 }
