@@ -5,6 +5,10 @@
 	"version": "0.0.1",
 	"preview": true,
 	"publisher": "crlotwhite",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/crlotwhite/synthv-script-helper.git"
+	},
 	"keywords": [
 		"SynthV",
 		"Synthesizer V"
