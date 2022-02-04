@@ -1,26 +1,39 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "synthv-script-helper" is now active!');
+	let openReference = vscode.commands.registerCommand('synthv-script-helper.openReference', ()=>{
+		const panel = vscode.window.createWebviewPanel(
+			"test",
+			"Test",
+			vscode.ViewColumn.One,
+			{
+				enableScripts: true
+			}
+		);
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('synthv-script-helper.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from SynthV Script Helper!');
+		panel.webview.html = getWebviewContent();
+
 	});
 
-	context.subscriptions.push(disposable);
+	context.subscriptions.push(openReference);
 }
 
-// this method is called when your extension is deactivated
 export function deactivate() {}
+
+function getWebviewContent() {
+	return `<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height">
+		<title></title>
+		
+	</head>
+	<body style="padding: 0px;">
+	
+	<iframe src="https://resource.dreamtonics.com/scripting/" sandbox="allow-downloads allow-forms allow-same-origin allow-modals allow-scripts" frameborder="0" width="100%" style="overflow: hidden; height: 100%; width: 100%; position: absolute; margin: 0%; padding: 0%;">
+	
+	</body>
+	</html>
+	`;
+}

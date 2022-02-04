@@ -1,8 +1,14 @@
 {
 	"name": "synthv-script-helper",
 	"displayName": "SynthV Script Helper",
-	"description": "",
+	"description": "An extension to help you develop SynthV scripts",
 	"version": "0.0.1",
+	"preview": true,
+	"publisher": "crlotwhite",
+	"keywords": [
+		"SynthV",
+		"Synthesizer V"
+	],
 	"engines": {
 		"vscode": "^1.63.0"
 	},
@@ -10,7 +16,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:synthv-script-helper.helloWorld"
+		"onCommand:synthv-script-helper.openReference"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -34,8 +40,8 @@
 		],
 		"commands": [
 			{
-				"command": "synthv-script-helper.helloWorld",
-				"title": "Hello World"
+				"command": "synthv-script-helper.openReference",
+				"title": "Open SynthV Reference"
 			}
 		]
 	},
